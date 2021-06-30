@@ -11,6 +11,20 @@ const tutorials = [
   'what is JSONP?'
 ];
 
-const titleCased = () => {
-  return tutorials
+
+const TutWordArrays = tutorials.map(tutorial => tutorial.split(' '));
+TutWordArrays
+
+// I want to call .map on each wordArray in TutWordArrays and do element[0].toUpperCase
+
+const FirstWordArrayCapped = TutWordArrays[0].map(word => word[0].toUpperCase()+ word.substring(1))
+
+FirstWordArrayCapped.join(" ")
+
+//^^^This code is the .map method to use WITHIN a .map method that is looping through the TutWordArrays
+
+const titleCasedWordArrays = TutWordArrays.map(wordArray => wordArray.map(word => word[0].toUpperCase()+ word.substring(1)))
+
+function titleCased() {
+  return titleCasedWordArrays.map(wordArray => wordArray.join(" "))
 }
